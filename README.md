@@ -1,5 +1,5 @@
 Rdkit
 
-Rdkit-related artifacts, e.g. an Rdkit container based on Ubuntu 20.04
+Rdkit-related artifacts, e.g. Rdkit containers based on Ubuntu 20.04 or Debian
 
 
