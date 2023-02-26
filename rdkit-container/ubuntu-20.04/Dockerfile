@@ -2,7 +2,7 @@ FROM ubuntu:20.04 as builder
 
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt update && apt upgrade -y; exit 0
-RUN apt install -y git vim cmake g++ python3 python3-numpy libfreetype6 git
+RUN apt install -y vim cmake g++ python3 python3-numpy libfreetype6 git
 RUN apt install -y libboost-iostreams1.71.0 libboost-system1.71.0 libboost-python1.71.0 libboost-serialization1.71.0 libboost-program-options1.71.0
 RUN apt install -y libeigen3-dev libboost-iostreams1.71-dev libboost-system1.71-dev libfreetype6-dev libboost-python1.71-dev libboost-serialization1.71-dev libboost-program-options1.71-dev
 
@@ -51,3 +51,5 @@ RUN apt install -y libboost-iostreams1.71.0 libboost-system1.71.0 libboost-pytho
 RUN python3 -c "import rdkit; print(rdkit.__version__)"
 RUN python3 -c "import rdkit; print(rdkit.__version__)" > /rdkit/rdkit-version.txt
 RUN python3 -c "from rdkit import Chem; m = Chem.MolFromSmiles('Cc1ccccc1');print(m);print(m.GetNumAtoms())"
+COPY test-rdkit.sh /rdkit/test-rdkit.sh
+RUN chmod 555 /rdkit/test-rdkit.sh
